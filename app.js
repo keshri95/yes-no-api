@@ -1,40 +1,59 @@
 const inputText = document.querySelector("#input-text");
 const submitButton = document.querySelector("#btn");
-const resultOpt = document.querySelector("#result");
+const resultOpt = document.querySelector("#answer");
 
 
-const url = 'https://yesno.wtf/#api';
+const url = 'https://yesno.wtf/api';
+
+
+// set timeout function -------
+const clearResult = ()=> {
+
+
+  setTimeout(() => {
+
+    inputText.value = '';
+    resultOpt.innerHTML = '';
+    
+  }, 3000);
+}
+
+// output the result ---------
+const showResult = (answer) => {
 
 
 
+  // timeout function---
+  setTimeout(() => {
 
-// const getResult = () => {
+    resultOpt.innerHTML = `${answer}`;
+    clearResult();
+  }, 3000);
 
-
-//   fetch(url)
-//   .then((response) => response.json())
-//   .then((data) => 
-//     console.log(data)
-//   );
-
-// }
-
-
-const getAll = () => {
-
-
-  
 }
 
 
-const getSomeText = () => {
+
+
+
+
+//  fecth api -------
+const getResult = () => {
   
-  const text = inputText.value;
-  const imgSrc = resultOpt.value;
+  fetch(url)
+  .then((response) => response.json())
+  .then((data) => showResult(data.answer));
+}
 
-  console.log({text, imgSrc});
+
+
+
+//  event result------
+const getSomeText = () => {
+   
+  getResult();
+  
 };
-
 
 
 const enteredTextEvent = () => {
