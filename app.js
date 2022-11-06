@@ -14,14 +14,12 @@ const clearResult = ()=> {
 
     inputText.value = '';
     resultOpt.innerHTML = '';
-    
+
   }, 3000);
 }
 
 // output the result ---------
 const showResult = (answer) => {
-
-
 
   // timeout function---
   setTimeout(() => {
